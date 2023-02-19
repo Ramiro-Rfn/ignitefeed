@@ -1,3 +1,16 @@
 .header {
-    
+    background: var(--gray-800);
+    display: flex;
+    justify-content: center;
+    padding: 1.25rem 0;
+}
+
+.header strong {
+    font-size: 1.5rem;
+    line-height: calc(1.5rem * 1.6);
+    margin-left: 1rem;
+}
+
+.header img {
+    width: 2rem;
 }
