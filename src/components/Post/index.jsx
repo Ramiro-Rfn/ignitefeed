@@ -28,6 +28,7 @@ export function Post({ author, publishedAt, content }) {
     }
 
     function hendleCommentChange() {
+        event.target.setCustomValidity('');
         setNewCommentText(event.target.value);
     }
 
@@ -37,6 +38,10 @@ export function Post({ author, publishedAt, content }) {
         })
 
         setComments(commentWithoutDeletedOne);
+    }
+
+    function handleCommentInvalid() {
+        event.target.setCustomValidity('Esse campo é obrigatório!')
     }
     
     return (
@@ -76,10 +81,17 @@ export function Post({ author, publishedAt, content }) {
                     value={newCommentText}
                     onChange={hendleCommentChange}
                     placeholder='Deixe um comentário'
+                    required
+                    onInvalid={handleCommentInvalid}
                 />
                 
                 <footer>
-                    <button type='submit'>Comentar</button>
+                    <button 
+                        type='submit'
+                        disabled={newCommentText.length === 0}
+                    >
+                        Comentar
+                    </button>
                 </footer>
             </form>
 
